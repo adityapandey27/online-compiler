@@ -27,6 +27,10 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("Connected to mongo"))
   .catch((error) => console.log(error));
 
+
+  app.get('/', async (req, res) => {
+    res.status(201).json({ message: 'Parcel Pending api' });
+  });
 app.post('/api/compile', async (req, res) => {
   try {
     const { code, language, version: reqVersion, versionIndex } = req.body;
