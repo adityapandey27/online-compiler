@@ -68,15 +68,23 @@ const CodeEditor = ({
       style={{ resize: 'both', minHeight: '200px', minWidth: '300px' }}
     >
       <Editor
+        key={language}
         height={height}
         width={width}
-        defaultLanguage={language}
+        language={language}
         value={value ?? defaultValue}
         theme={editorTheme}
         onChange={onChange}
         onMount={handleEditorDidMount}
         options={{
           minimap: { enabled: true },
+          formatOnPaste: true,
+          formatOnType: true,
+          tabSize: 4,
+          insertSpaces: true,
+          autoIndent: 'advanced',
+          quickSuggestions: false,
+          contextmenu: false,
           fontSize: 14,
           lineNumbers: 'on',
           roundedSelection: false,
@@ -92,8 +100,6 @@ const CodeEditor = ({
           },
           suggestOnTriggerCharacters: true,
           wordWrap: 'on',
-          formatOnPaste: true,
-          formatOnType: true,
         }}
         loading={<div className="p-4 text-gray-500">Loading editor...</div>}
       />
